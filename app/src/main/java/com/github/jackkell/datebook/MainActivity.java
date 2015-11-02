@@ -24,25 +24,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter = new DateCardRecylerView(getDataSet());
-        recyclerView.setAdapter(adapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        ((DateCardRecylerView) adapter).setOnItemClickListener(new DateCardRecylerView
-                .MyClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                Log.i(TAG, " Clicked on Item " + position);
-            }
-        });
     }
 
 
