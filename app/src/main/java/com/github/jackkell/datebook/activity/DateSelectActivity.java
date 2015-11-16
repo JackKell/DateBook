@@ -15,13 +15,13 @@ import com.github.jackkell.datebook.dataobject.RomanticDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class DateSelectActivity extends AppCompatActivity {
 
     private static String TAG = "CardViewActivity";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_date_select);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,8 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
         List<RomanticDate> dates = new ArrayList<>();
         RomanticDate romanticDate = new RomanticDate("Movies", "Go see star wars right now.", "Fun", "2 hours", "20 dollars", "Car");
+        dates.add(romanticDate);
 
-        DateCardRecyclerViewAdapter dateCardRecyclerViewAdapter = new DateCardRecyclerViewAdapter();
+        for (int i = 0; i < 20; i++) {
+            romanticDate = new RomanticDate("Title", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting.", "Type", "Time", "Cost", "Needs");
+            dates.add(romanticDate);
+        }
+
+        DateCardRecyclerViewAdapter dateCardRecyclerViewAdapter = new DateCardRecyclerViewAdapter(dates);
         dateList.setAdapter(dateCardRecyclerViewAdapter);
     }
 
